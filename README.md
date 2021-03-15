@@ -1,4 +1,4 @@
-Projecto LogiPEET no ambito da disciplina PEE
+Projecto LogiPEET no âmbito da disciplina PEE
 
 Base de dados --> db
 
