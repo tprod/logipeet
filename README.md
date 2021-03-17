@@ -6,7 +6,7 @@
 
 **Diretorias**
 
-└───db
+└───db <br>
     └───docs    #Documentação da base de dados
 
 
