@@ -1,4 +1,5 @@
-Projecto LogiPEET no âmbito da disciplina PEE
+#LogiPEET
 
-Base de dados --> db
+*LogiPEET é um Projecto no âmbito da disciplina PEE.
+*Para mais informações http://logipeet.web.ua.pt/ 
 
