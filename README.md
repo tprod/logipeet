@@ -7,7 +7,7 @@
 **Diretorias**
 ```
 └───db
-    └───docs        #Documentação base de dados
-        └───img    
+    ├───docs    #Documentação Base de Dados
+    └───img    
 ```
 
