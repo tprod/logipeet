@@ -6,8 +6,9 @@
 
 **Diretorias**
 ```
+├───android
 └───db
-    ├───docs    #Documentação Base de Dados
+    ├───docs    #Documentação base de dados
     └───img    
 ```
 
