@@ -10,49 +10,87 @@
         android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/_"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="41dp" />
+        android:layout_marginBottom="119dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/textLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/_" />
 
     <TextView
         android:id="@+id/textLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginBottom="37dp"
         android:text="Login:"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="320dp" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textPassword"
+        app:layout_constraintEnd_toStartOf="@+id/editLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
     <TextView
         android:id="@+id/textPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="57dp"
         android:text="Password:"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="376dp" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toStartOf="@+id/editPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLogin" />
 
     <EditText
         android:id="@+id/editLogin"
-        android:layout_width="218dp"
-        android:layout_height="30dp"
+        android:layout_width="228dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginRight="59dp"
+        android:layout_marginBottom="2dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="309dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textLogin" />
 
     <EditText
         android:id="@+id/editPassword"
-        android:layout_width="219dp"
-        android:layout_height="28dp"
+        android:layout_width="229dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginRight="59dp"
+        android:layout_marginBottom="57dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="367dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textPassword"
+        app:layout_constraintTop_toTopOf="@+id/editLogin"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="218dp"
-        android:layout_height="35dp"
-        android:text="Login"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="452dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="244dp"
+        android:text="@string/login"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+
 </android.support.constraint.ConstraintLayout>
