@@ -13,7 +13,7 @@ def get():
 # Criar db com o nome 'logipeet # mysql > CREATE DATABASE logipeet'
 
 #Ligação db
-api.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:AvEiRo123--@localhost/logipeet'
+api.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:****@localhost/logipeet'
 api.config['SQLALCHEMY_TRACK_MODIFICATIOSN'] = True
 
 #Init db
