@@ -6,6 +6,7 @@
 
 **Diretorias**
 ```
+├───API
 ├───android
 └───db
     ├───docs    #Documentação base de dados
