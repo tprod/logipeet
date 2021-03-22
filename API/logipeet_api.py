@@ -17,7 +17,11 @@ def get():
 # password do root logipeet
 
 #Ligação db
+<<<<<<< HEAD
 api.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:logipeet@localhost/logipeet'
+=======
+api.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:****@localhost/logipeet'
+>>>>>>> d765dec63e6af4648fb226268faf80e8db0e56ee
 api.config['SQLALCHEMY_TRACK_MODIFICATIOSN'] = True
 
 #Init db
