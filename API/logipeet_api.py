@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy 
 from flask_marshmallow import Marshmallow
+import pymysql
 
+pymysql.install_as_MySQLdb()
 #Inicialização do API
 
 api = Flask(__name__)
@@ -10,10 +12,12 @@ api = Flask(__name__)
 def get():
     return jsonify({'msg': 'OK'})
 
-# Criar db com o nome 'logipeet # mysql > CREATE DATABASE logipeet'
+# Criar db com o nome 
+# 'logipeet # mysql > CREATE DATABASE logipeet'
+# password do root logipeet
 
 #Ligação db
-api.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:AvEiRo123--@localhost/logipeet'
+api.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:logipeet@localhost/logipeet'
 api.config['SQLALCHEMY_TRACK_MODIFICATIOSN'] = True
 
 #Init db
@@ -27,11 +31,10 @@ ma = Marshmallow(api)
 
 #Modelo de entidades
 
-
 class User(db.Model):
     idUser = db.Column(db.Integer, primary_key=True , unique=True, index=True)
-    name = db.Column(db.String(64))
-    email = db.Column(db.String(64), unique=True)
+    name = db.Column(db.String(64), nullable=False)
+    email = db.Column(db.String(64), unique=True, nullable=False)
     password = db.Column(db.String(128))
     age = db.Column(db.Integer)
     gender = db.Column(db.Boolean)
@@ -60,13 +63,13 @@ class UserSchema(ma.Schema):
 
 
 # Init schema
-user_schema = UserSchema(strict=True)
-users_schema = UserSchema(many=True, strict=True)
+user_schema = UserSchema
+
 
 
 #Criar Users
 
-@api.route('/users', methods=['POST'])
+@api.route('/users/', methods=['POST'])
 def add_users():
     name = request.json['name']
     email = request.json['email']
@@ -76,14 +79,24 @@ def add_users():
     address = request.json['address']
     phone = request.json['phone']
     type_user = request.json['type_user']
+
     new_user = User(name, email, password, age ,gender, address, phone, type_user)
+    
     db.session.add(new_user)
     db.session.commit()
-    
-return user_schema.jsonify(add_user)
+
+    return user_schema.jsonify(new_user)
+
+#Obter users
+
+@api.route('/users/<idUser>', methods=['GET'])
+def get_users():
+    all_users = User.query.all()
+    result = UserSchema.dump(all_users)
+    return jsonify(result)
 
 
-# Server    
+# Run Server    
 
 if __name__ == '__main__':
     api.run(debug=True)
