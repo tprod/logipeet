@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
 from config import db
 import yaml
 import os
@@ -7,7 +8,7 @@ import os
 
 class User(db.Model):
     __tablename__ = 'login'
-    idLogin = db.Column(db.Integer, primary_key=True , unique=True, index=True)
+    id = db.Column(db.Integer(), primary_key=True , unique=True, index=True)
     time_in = db.Column(db.datetime)
     time_out = db.Column(db.datetime)
     def as_dict(self):

@@ -1,1 +1,1 @@
-SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:logipeet@localhost:3306/logipeet'
+SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:logipeet@localhost:3306/logipeet?charset=utf8mb4'

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
 from config import db
 import yaml
 import os
@@ -8,7 +9,7 @@ import os
 
 class User(db.Model):
     __tablename__ = 'sensors'
-    idSensors = db.Column(db.Integer, primary_key=True , unique=True, index=True)
+    id = db.Column(db.Integer(), primary_key=True , unique=True, index=True)
     type_sensor = db.Column(db.Integer)
     serial_number = db.Column(db.Integer)
     status_sen = db.Column(db.String(64))
