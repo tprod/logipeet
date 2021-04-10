@@ -7,7 +7,10 @@ int lcd_key     = 0;
 int adc_key_in  = 0;
 
 int PESO = 200;
-//int escolha = 1;
+int ID = 93158;
+int escolha = 1;
+int state = 5;
+int last_state = 5;
 
 #define btnRIGHT  0
 #define btnUP     1
@@ -34,78 +37,68 @@ void setup()
  lcd.begin(16, 2);   
  lcd.setCursor(4,0); 
  lcd.print("feedEET");
-
 }
 
 void loop()
 {
  lcd.setCursor(0,0);         
  lcd_key = read_LCD_buttons();  
+ state = read_LCD_buttons();
 
- 
-//  lcd.print("1- A")
-//  delay(1500);
-//  lcd.clear();
-//  lcd.print("2- B")
-//  delay(1500);
-//  lcd.clear();
-//  lcd.print("3- C")
-//  delay(1500);
-//  lcd.clear();
-//  lcd.print("4- D")
-//  delay(1500);
-//  lcd.clear();
-//
-//  while(lcd_key != btnSELECT)
-//  {
-//    if(lcd_key == btnUP)
-//      escolha += 1;
-//    else if(lcd_key == btnDOWN)
-//      escolha -= 1;
-//
-//    if(escolha < 1 && escolha > 4)
-//      escolha = 0;
-//  }
- 
- switch (lcd_key)              
+  if(state != last_state)
+  {
+    lcd.clear();
+    
+    if(lcd_key == btnRIGHT)
+      escolha = escolha + 1;
+    else if(lcd_key == btnLEFT)
+      escolha = escolha - 1;
+  }
+  last_state = state;  
+
+
+  if (escolha%5==0)
+    escolha = escolha+pow(-1,escolha);
+
+    
+ switch (escolha)
  {
-   case btnRIGHT:
-     {
-     lcd.clear();
-     lcd.print("Peso = ");
-     lcd.print(PESO);
-     lcd.print("Kg");
-     break;
-     }
-   case btnLEFT:
-     {
-      lcd.clear();
-     lcd.print("Reservatorio");
-     break;
-     }
-   case btnUP:
-     {
-      lcd.clear();
-     lcd.print("UP");
-     break;
-     }
-   case btnDOWN:
-     {
-      lcd.clear();
-     lcd.print("DOWN");
-     break; 
-     }
-   case btnSELECT:
-     {
-      lcd.clear();
-      lcd.print("SELECT");
-      break;
-     }
-//   case btnNONE:
-//     {
-//     lcd.clear();
-//     lcd.print("NONE");
-//     break;
-//     }
- }
+      case 1:
+      {
+        
+        lcd.print("Peso na Taca: ");
+        lcd.setCursor(0,1);
+        lcd.print(PESO);
+        lcd.print("Kg");
+        break;
+      }
+
+      case 2:
+      {
+        
+        lcd.print("Reser Comida: ");
+        lcd.setCursor(0,1);
+        lcd.print(PESO);
+        lcd.print("Kg");
+        break;
+      }
+
+      case 3:
+      {
+        
+        lcd.print("Reserv Agua: ");
+        lcd.setCursor(0,1);
+        lcd.print(PESO);
+        lcd.print("Kg");
+        break;
+      }
+
+       case 4:
+      {
+        
+        lcd.print("ID: ");
+        lcd.print(ID);
+        break;
+      }
+  }
 }
