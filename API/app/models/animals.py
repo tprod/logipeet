@@ -5,7 +5,7 @@ from config import db
 import yaml
 import os
 
-class User(db.Model):
+class Animals(db.Model):
     __tablename__ = 'animals'
     id = db.Column(db.Integer(), primary_key=True , unique=True, index=True)
     name_animal = db.Column(db.String(45))

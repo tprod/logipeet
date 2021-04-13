@@ -7,7 +7,7 @@ import os
 
 
 
-class User(db.Model):
+class Cannil(db.Model):
     __tablename__ = 'cannil'
     id = db.Column(db.Integer(), primary_key=True , unique=True, index=True)
     name_cannil = db.Column(db.String(45))

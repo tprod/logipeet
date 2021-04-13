@@ -7,7 +7,7 @@ import os
 
 
 
-class User(db.Model):
+class Events(db.Model):
     __tablename__ = 'events'
     id = db.Column(db.Integer(), primary_key=True , unique=True, index=True)
     event_init = db.Column(db.String(64))

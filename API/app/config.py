@@ -6,7 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 
-
 app = Flask(__name__)
 
 config_obj = yaml.load(open('config.yaml'), Loader=yaml.Loader)
