@@ -2,17 +2,17 @@
 
 HX711 scale;              // criamos variável scale do tipo HX711 
 
-uint8_t DDOUT = A0;      
-uint8_t SSCK = A1;
+//uint8_t DDOUT = A0;      
+//uint8_t SSCK = A1;
 
 void setup() 
 {
   Serial.begin(9600);
-
+  
   scale.begin(A0,A1);
 
-  //scale.set_scale(1000);
-//  scale.callibrate_scale(0.5,10);
+  scale.set_scale(100);
+  //scale.callibrate_scale(500,10);
   scale.tare();
   
   Serial.print("\nScale ");
@@ -23,6 +23,8 @@ void setup()
 
 void loop() 
 {
+  //Serial.print("\nScale ");
+ // Serial.print(scale.get_scale());
   Serial.print("\nPrint ");
   Serial.print(scale.get_units());
 
