@@ -8,16 +8,19 @@ import json
 bp_sensors = Blueprint('sensors', 'sensors')
 
 @bp_sensors.route('/sensors', methods=['GET'])
+#@jwt_required()
 def api_get():
     sensors = sensors_service.get()
     return jsonify([sensors.as_dict() for sensors in sensors])
 
 @bp_sensors.route('/sensors', methods=['POST'])
+#@jwt_required()
 def api_post():
     sensors = sensors_service.post(request.json)
     return jsonify(sensors.as_dict())
 
 @bp_sensors.route('/sensors/<string:id>', methods=['PUT'])
+#@jwt_required()
 def api_put(id):
     body = request.json
     body['id'] = id
@@ -25,6 +28,7 @@ def api_put(id):
     return jsonify(res.as_dict()) if isinstance(res, Sensors) else jsonify(res)
 
 @bp_sensors.route('/sensors/<string:id>', methods=['DELETE'])
+#@jwt_required()
 def api_delete(id):
     res = sensors_service.delete(id)
     return jsonify(res)

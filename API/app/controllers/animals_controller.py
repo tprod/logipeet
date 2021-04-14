@@ -9,16 +9,19 @@ bp_animals = Blueprint('animals', 'animals')
 
 
 @bp_animals.route('/animals', methods=['GET'])
+#@jwt_required()
 def api_get():
     animals = animals_service.get()
     return jsonify([animals.as_dict() for animals in animals])
 
 @bp_animals.route('/animals', methods=['POST'])
+#@jwt_required()
 def api_post():
     animals = animals_service.post(request.json)
     return jsonify(animals.as_dict())
 
 @bp_animals.route('/animals/<string:id>', methods=['PUT'])
+#@jwt_required()
 def api_put(id):
     body = request.json
     body['id'] = id
@@ -26,6 +29,7 @@ def api_put(id):
     return jsonify(res.as_dict()) if isinstance(res, Animals) else jsonify(res)
 
 @bp_animals.route('/animals/<string:id>', methods=['DELETE'])
+#@jwt_required()
 def api_delete(id):
     res = animals_service.delete(id)
     return jsonify(res)
