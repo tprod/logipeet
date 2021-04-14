@@ -7,6 +7,11 @@ def get():
 
     return User.query.all()
 
+def get_auth(email,password):
+
+    auth = User.query.filter((User.email == email) & (User.password == password) & User.active_user == 1).first()
+    return auth
+
 def post(body):
 
     user = User(**body)

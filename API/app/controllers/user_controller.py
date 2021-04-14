@@ -12,6 +12,16 @@ def api_get():
     users = user_service.get()
     return jsonify([user.as_dict() for user in users])
 
+
+@bp_user.route('/auth', methods=['POST'])
+def api_auth():
+    info_auth = request.get_json() 
+    username = info_auth['email']
+    password = info_auth['password']
+    res = user_service.get_auth(username,password)
+    return jsonify(res.as_dict()) if isinstance(res, User) else jsonify(res)
+   
+
 @bp_user.route('/users', methods=['POST'])
 def api_post():
     user = user_service.post(request.json)
