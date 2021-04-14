@@ -34,5 +34,5 @@ ou correr diretamente o script API/db/logipeet_db.sql na consola MySQL
 
 **Executar a API:**
 
-`python app.py`
+`python app.py` ou `flask run`
 
