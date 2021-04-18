@@ -6,6 +6,7 @@ from controllers.events_controller import bp_events
 from controllers.sensors_controller import bp_sensors
 from controllers.cannil_controller import bp_cannil
 from controllers.animals_controller import bp_animals
+from controllers.login_controller import bp_login
 
 
 app.register_blueprint(bp_user)
@@ -14,6 +15,7 @@ app.register_blueprint(bp_events)
 app.register_blueprint(bp_sensors)
 app.register_blueprint(bp_cannil)
 app.register_blueprint(bp_animals)
+app.register_blueprint(bp_login)
 
 
 if __name__ == '__main__':

@@ -13,22 +13,6 @@ from flask_jwt_extended import JWTManager
 
 bp_user = Blueprint('users', 'users')
 
-@bp_user.route('/auth', methods=['POST'])
-def api_auth():
-    info_auth = request.get_json() 
-    username = info_auth['email']
-    password = info_auth['password']
-    res = user_service.get_auth(username,password)
-    if res == None:
-        return "Wrong username or password"
-    else:
-        acess_token = create_access_token(identity=username, expires_delta=timedelta(seconds=3600))
-        refresh_token = create_refresh_token(identity=username)
-        return jsonify({
-             'acess_token': acess_token,
-             'refresh_token': refresh_token,
-         })
-
 @bp_user.route('/users', methods=['GET'])
 @jwt_required()
 def api_get():
