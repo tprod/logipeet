@@ -1,34 +1,37 @@
-/*
-*
-* All the resources for this project:
-* Modified by Handson Technology
-* www.handsontec.com
-* Created by Handsontec Tech team
-*
-*/
+#include <MFRC522.h>
+#include <MFRC522Extended.h>
+#include <require_cpp11.h>
+#include <deprecated.h>
 
 #include <SPI.h>
-#include <MFRC522.h>
-#define SS_PIN 10
-#define RST_PIN 9
+#define SS_PIN 53
+#define RST_PIN 5
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
 
-void setup()
-{
+// UID cartão: 
+// UID porta chaves: 
+
+void setup() {
+  // put your setup code here, to run once:
     Serial.begin(9600); // Initiate a serial communication, sets data rate to 9600 bps
+    while(!Serial);
     SPI.begin(); // Initiate SPI bus, where SCK and MOSI are low and SS(slave select) is high
     mfrc522.PCD_Init(); // Initiate MFRC522
+    delay(4);
+    mfrc522.PCD_DumpVersionToSerial();
     Serial.println("Put close your card to the reader...");
     Serial.println();   // Esta função faz avançar uma linha (=enter), ficando uma linha de intervalo
+
 }
 
-void loop()
-{
+void loop() {
+  // put your main code here, to run repeatedly:
     // Look for new cards
+    delay(1000);
     if ( ! mfrc522.PICC_IsNewCardPresent()) // No caso de não haver TAGS a serem detetadas
     {
-        Serial.println("TAG Não Detetada");  
+        //Serial.println("TAG Não Detetada");  
         return;
     }
     // Select one of the cards
@@ -37,6 +40,7 @@ void loop()
         Serial.println("Erro de leitura da TAG");
         return;
     }
+    Serial.println("Card selected");
 
     //Show UID on serial monitor
     Serial.print("UID tag :");  // diferente de Serial.println() porque só imprime a mensagem, não avança uma linha
@@ -55,7 +59,7 @@ void loop()
     Serial.print("Message : ");
     content.toUpperCase();  // Faz com que os digitos dos bytes fiquem em maiusculas 
 
-    if (content.substring(0) == "B0 AC 7E 7A") //change here the UID of the card/cards that you want to give access => myString.substring(from, to)
+    if ( (content.substring(1) == "47 EB D5 B5") || (content.substring(1) == "79 A8 5F B3") ) //change here the UID of the card/cards that you want to give access => myString.substring(from, to)
     {
         Serial.println("Authorized access");
         Serial.println();
@@ -66,7 +70,3 @@ void loop()
         delay(3000);
     }
 }
-
-// Sugestão:
-// criar array com todos os IDs das Tags a serem usadas
-// Terá de returnar uma flag (provavelmente) por forma a dar enable às restantes funções do dispensador (Enable para o próximo estado da State Machine)

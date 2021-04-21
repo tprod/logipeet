@@ -3,25 +3,26 @@ from flask import Blueprint, jsonify, request
 import services.cannil_service as cannil_service
 from models.cannil import Cannil
 from werkzeug.exceptions import HTTPException
+from flask_jwt_extended import jwt_required
 import json
 
 bp_cannil = Blueprint('cannil', 'cannil')
 
 
 @bp_cannil.route('/cannil', methods=['GET'])
-#@jwt_required()
+@jwt_required()
 def api_get():
     cannil = cannil_service.get()
     return jsonify([cannil.as_dict() for cannil in cannil])
 
 @bp_cannil.route('/cannil', methods=['POST'])
-#@jwt_required()
+@jwt_required()
 def api_post():
     cannil = cannil_service.post(request.json)
     return jsonify(cannil.as_dict())
 
 @bp_cannil.route('/cannil/<string:id>', methods=['PUT'])
-#@jwt_required()
+@jwt_required()
 def api_put(id):
     body = request.json
     body['id'] = id
@@ -29,7 +30,7 @@ def api_put(id):
     return jsonify(res.as_dict()) if isinstance(res, Cannil) else jsonify(res)
 
 @bp_cannil.route('/cannil/<string:id>', methods=['DELETE'])
-#@jwt_required()
+@jwt_required()
 def api_delete(id):
     res = cannil_service.delete(id)
     return jsonify(res)
