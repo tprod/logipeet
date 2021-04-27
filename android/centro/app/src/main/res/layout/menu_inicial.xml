@@ -10,10 +10,10 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
         android:backgroundTint="#FF794F"
-        android:text="  First on schedule  "
+        android:text=" First on schedule  "
         android:textAlignment="center"
         android:textColor="#0C0C0C"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,11 +25,11 @@
 
     <Button
         android:id="@+id/insert_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
         android:layout_marginTop="92dp"
         android:backgroundTint="#38D6D1"
-        android:text="  Take out product  "
+        android:text=" Take out product  "
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -38,8 +38,8 @@
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#FBEF7F"
         android:text="         Schedule         "
@@ -50,8 +50,8 @@
 
     <Button
         android:id="@+id/Storage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#FDACC8"
         android:text="          Storage          "
@@ -62,8 +62,8 @@
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#A7FFEB"
         android:text="        Dispenser         "
