@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Centro">
+<<<<<<< HEAD
         <activity android:name=".splashscreen"></activity>
+=======
+        <activity android:name=".Dispenser"></activity>
+>>>>>>> 4a1f9f3604312c549a8e033dc089ff09aa27e9cf
         <activity android:name=".leitor_codigo" />
         <activity android:name=".storage" />
         <activity android:name=".registo" />

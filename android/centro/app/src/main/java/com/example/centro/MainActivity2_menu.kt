@@ -21,5 +21,11 @@ class MainActivity2_menu : AppCompatActivity() {
             val intent = Intent(this, storage::class.java)
             startActivity(intent)
         }
+
+        val Dispenser = findViewById<Button>(R.id.button9) as Button
+        Dispenser.setOnClickListener {
+            val intent = Intent(this, com.example.centro.Dispenser::class.java)
+            startActivity(intent)
+        }
     }
 }
