@@ -39,7 +39,7 @@ class leitor_codigo : AppCompatActivity() {
                 runOnUiThread {
                     // code for value of barcode!!!!
 
-                    
+
                     // Test purposes only
                     //findViewById<TextView>(R.id.tv_textView).text = it.text
                 }
