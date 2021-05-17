@@ -11,23 +11,23 @@ void setup()
   
   scale.begin(A0,A1);
 
-  scale.set_scale(100);
-  //scale.callibrate_scale(500,10);
+  scale.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
   scale.tare();
+ // scale.callibrate_scale(500,10);
   
-  Serial.print("\nScale ");
-  Serial.print(scale.get_scale());
-  Serial.print("\nTara ");
-  Serial.print(scale.get_tare());     // imprime o valor da tara (peso da taça s/comida)
+  //Serial.print("\nScale: ");
+  //Serial.print(scale.get_scale());
+  //Serial.print("\nTara ");
+  //Serial.print(scale.get_tare());     // imprime o valor da tara (peso da taça s/comida)
 }
 
 void loop() 
 {
   //Serial.print("\nScale ");
  // Serial.print(scale.get_scale());
-  Serial.print("\nPrint ");
-  Serial.print(scale.get_units());
-
-  delay(1000);
+  Serial.print("\nPeso: ");
+  Serial.print(scale.get_units(),3);
+  Serial.print(" g");
+  delay(500);
 
 }
