@@ -21,81 +21,87 @@ int last_state = 5;
 
 int read_LCD_buttons()
 {
- adc_key_in = analogRead(0);          // read analog A0 value
- if (adc_key_in > 1000) return btnNONE;
- if (adc_key_in < 50)   return btnRIGHT;
- if (adc_key_in < 250)  return btnUP;
- if (adc_key_in < 450)  return btnDOWN;
- if (adc_key_in < 650)  return btnLEFT;
- if (adc_key_in < 850)  return btnSELECT;
+  adc_key_in = analogRead(0);          // read analog A0 value
+  if (adc_key_in > 1000) return btnNONE;
+  if (adc_key_in < 50)   return btnRIGHT;
+  if (adc_key_in < 250)  return btnUP;
+  if (adc_key_in < 450)  return btnDOWN;
+  if (adc_key_in < 650)  return btnLEFT;
+  if (adc_key_in < 850)  return btnSELECT;
 
- return btnNONE;
+  return btnNONE;
 }
 
 void setup()
 {
- lcd.begin(16, 2);   
- lcd.setCursor(4,0); 
- lcd.print("feedEET");
+  lcd.begin(16, 2);
+  lcd.setCursor(4, 0);
+  lcd.print("feedEET");
 }
 
 void loop()
 {
- lcd.setCursor(0,0);         
- lcd_key = read_LCD_buttons();  
- state = read_LCD_buttons();
+  lcd.setCursor(0, 0);
+  lcd_key = read_LCD_buttons();
+  state = read_LCD_buttons();
 
-  if(state != last_state)
+  if (state != last_state)
   {
     lcd.clear();
-    
-    if(lcd_key == btnRIGHT)
+
+    if (lcd_key == btnRIGHT)
+    {
       escolha = escolha + 1;
-    else if(lcd_key == btnLEFT)
+    }
+    else if (lcd_key == btnLEFT)
+    {
       escolha = escolha - 1;
+    }
   }
-  last_state = state;  
+  last_state = state;
 
 
-  if (escolha%5==0)
-    escolha = escolha+pow(-1,escolha);
+  if (escolha % 5 == 0)
+  {
+    escolha = escolha + pow(-1, escolha) * 4;
+    Serial.print(escolha);
+  }
 
-    
- switch (escolha)
- {
-      case 1:
+  switch (escolha)
+  {
+    case 1:
       {
-        
+
         lcd.print("Peso na Taca: ");
-        lcd.setCursor(0,1);
+        lcd.setCursor(0, 1);
         lcd.print(PESO);
         lcd.print("Kg");
         break;
       }
 
-      case 2:
+    case 2:
       {
-        
+
         lcd.print("Reser Comida: ");
-        lcd.setCursor(0,1);
+        lcd.setCursor(0, 1);
         lcd.print(PESO);
         lcd.print("Kg");
         break;
       }
 
-      case 3:
+    case 3:
       {
-        
+
         lcd.print("Reserv Agua: ");
-        lcd.setCursor(0,1);
+        lcd.setCursor(0, 1);
         lcd.print(PESO);
         lcd.print("Kg");
         break;
       }
 
-       case 4:
+    case 4:
       {
-        
+
         lcd.print("ID: ");
         lcd.print(ID);
         break;
