@@ -9,9 +9,9 @@ float Final_weigth_reservoir;
 float Food2Disp;
 
 // State Machine Execution
-void s_execute(sm_t *psm, int Desired_weigth);
+void s_execute(sm_t *psm, /*int Desired_weigth*/);  //Desired_weigth deverá ser uma variável global da main()
 {
-    switch(psm -> current_state)
+    switch((sm_state_p)psm -> current_state)
     {
         case st_Init:
             // Chamar a função da ponte H para que o motor páre
@@ -57,7 +57,8 @@ void s_execute(sm_t *psm, int Desired_weigth);
 }
 
 // State Machine Initialization 
-void sm_init(sm_t *psm)
+void sm_init(sm_t *psm, int initial_state)
 {
-    psm -> current_state = st_Init;
+    psm -> initial_state = st_Init;
+    psm -> current_state = psm -> initial_state;
 }
