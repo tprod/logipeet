@@ -9,17 +9,22 @@ float Final_weigth_reservoir;
 float Food2Disp;
 
 // State Machine Execution
-void s_execute(sm_t *psm, /*int Desired_weigth*/);  //Desired_weigth deverá ser uma variável global da main()
+void s_execute(sm_t *psm, 200/*int Desired_weigth*/);  //Desired_weigth deverá ser uma variável global da main()
 {
     switch((sm_state_p)psm -> current_state)
     {
         case st_Init:
             // Chamar a função da ponte H para que o motor páre
             Ponte_H(0);
-            if(Time2Disp == 1)
-            {
-                psm -> current_state = st_Disp;
-            }
+			
+			if(psm->last_event = ev_disp_water)
+			{
+			 psm->current_state = disp_water;
+			}
+			else if(psm->last_event = ev_NULL || psm->last_event = ev_Init)
+			{
+			 psm->current_state = st_Init;
+			}
 
         case st_Disp:
             // Medir o peso da taça (bowl_weigth)
@@ -48,7 +53,17 @@ void s_execute(sm_t *psm, /*int Desired_weigth*/);  //Desired_weigth deverá ser
                 // Medir o peso da taça (reservoir_weigth)
                 reservoir_weigth = Sensor_Peso_Reservatorio();
             }
-            psm -> current_state = st_Init;
+            
+			psm->last_event = ev_Init;
+        
+			if(psm->last_event = ev_disp_food || psm->last_event = ev_NULL)
+			{
+			 psm->current_state = st_Disp;
+			}
+			else if(psm->last_event = ev_Init)
+			{
+			 psm->current_state = st_Init;
+			}
         
         default:
             Serial.printl("ERROR! State not found!");
@@ -62,3 +77,12 @@ void sm_init(sm_t *psm, int initial_state)
     psm -> initial_state = st_Init;
     psm -> current_state = psm -> initial_state;
 }
+
+int sm_get_current_state(sm_t *psm)
+{
+  return psm->current_state; 
+}
+
+void sm_send_event(sm_t *psm, sm_event_t event)
+{
+  psm->last_event = event;
