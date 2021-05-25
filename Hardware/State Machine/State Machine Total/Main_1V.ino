@@ -4,25 +4,26 @@
 sm_t water;
 sm_t food;
 
+HX711 scale;              // criamos variável scale do tipo HX711 
+
 // RelayModule* relay;
 // relay = new RelayModule(RELAY_PIN,INVERT_RELAY);
 
 int peso_taca_agua;
 int food_weigth;
-// bool Time2Disp=0;
+int Time2Disp = 0;  // Flag reveived from Rasp to Dispense
 
 void setup() {
   Serial.begin(9600);
   sm_init(&water, Init_water);
-  sm_init(&food, st_Init);
+  sm_init(&food, Init_food);
 
-  DDOUT_Agua = A1;
-  SSCK_Agua = A2;
+  setup_PesoTaca_Agua(scale);
 }
 
 void loop() {
-   peso_taca_agua = PesoTaca_Agua();
-   food_weigth = PesoTaca_Agua();
+   peso_taca_agua = PesoTaca_Agua(scale);
+   food_weigth = PesoTaca_Agua(scale);
    
    if(peso_taca_agua < 200)
    {
