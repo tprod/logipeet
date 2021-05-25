@@ -44,7 +44,8 @@ int last_state = 5;
 
 
 // Componentes
-float PesoTaca_Agua();
+void setup_PesoTaca_Agua(HX711& scale);
+float PesoTaca_Agua(HX711& scale);
 void Ponte_H(int Flag);
 // int read_LCD_buttons();
 // void LCD();
