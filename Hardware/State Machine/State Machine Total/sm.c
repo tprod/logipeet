@@ -2,16 +2,7 @@
 #include "FuncoesComponentes.h"
 
 //typedef bool boolean;
-
-
-
-// Creation of variables for food
-int Time2Disp = 0;  // Flag reveived from Rasp to Dispense
-float bowl_weigth;    // Current weigth in the bowl
-float reservoir_weigth; 
-float Final_weigth_reservoir;
-float Food2Disp;
-_Bool stateRelay;
+_Bool stateRelay;   // mudar depois!
 
 
 
@@ -89,63 +80,66 @@ void sm_execute_water(sm_t *psm)
 
 void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável global da main()
 {
-  
-    switch((sm_state_food_t)psm -> current_state)
-    {
-        case st_Init:
-            // Chamar a função da ponte H para que o motor páre
-            Ponte_H(0);
-			
-			if(psm->last_event == ev_disp_water)
-			{
-			 psm->current_state = disp_water;
-			}
-			else if(psm->last_event == ev_NULL || psm->last_event == ev_Init)
-			{
-			 psm->current_state = st_Init;
-			}
+  float bowl_weigth;    // Current weigth in the bowl
+  float reservoir_weigth; 
+  float Final_weigth_reservoir;
+  float Food2Disp;
+    
+   switch((sm_state_food_t)psm -> current_state)
+   {
+      case Init_food:
+      {
+        // Chamar a função da ponte H para que o motor páre
+        Ponte_H(0);
+  			
+  			if(psm->last_event == ev_disp_food)
+  			{
+  			 psm->current_state = disp_food;
+  			}
+  			else if(psm->last_event == ev_NULL || psm->last_event == ev_Init)
+  			{
+  			 psm->current_state = Init_food;
+  			}
+      }
 
-        case st_Disp:
-            // Medir o peso da taça (bowl_weigth)
-            bowl_weigth = 150; //PesoTaca_Agua();
+      case disp_food:
+      {
+        // Medir o peso da taça (bowl_weigth)
+        bowl_weigth = 150; //PesoTaca_Agua();
 
-            // Medir o peso do reservatório (reservoir_weigth)
-            reservoir_weigth = PesoTaca_Agua();
+        // Medir o peso do reservatório (reservoir_weigth)
+        reservoir_weigth = PesoTaca_Agua();
 
-            // Calcular quantidade de comida
-            Food2Disp = Total_food - bowl_weigth;
+        // Calcular quantidade de comida
+        Food2Disp = Total_food - bowl_weigth;
 
-            //Calculo do peso final do reservatorio
-            Final_weigth_reservoir = reservoir_weigth - Food2Disp;
+        //Calculo do peso final do reservatorio
+        Final_weigth_reservoir = reservoir_weigth - Food2Disp;
 
-            if(Total_food == bowl_weigth)
-            {
-                printf("Warning! Bowl already full!");
-                break;
-            }
+//        if(Total_food == bowl_weigth)
+//        {
+//          printf("Warning! Bowl already full!");
+//        }
 
-            // Chamar a função da ponte H para que o motor comece a rodar
-            Ponte_H(1);
+        // Chamar a função da ponte H para que o motor comece a rodar
+        Ponte_H(1);
 
-            while(reservoir_weigth < Final_weigth_reservoir)
-            {
-                // Medir o peso da taça (reservoir_weigth)
-                reservoir_weigth = PesoTaca_Agua(); //Sensor_Peso_Reservatorio();
-            }
+        while(reservoir_weigth < Final_weigth_reservoir)
+        {
+          // Medir o peso da taça (reservoir_weigth)
+          reservoir_weigth = PesoTaca_Agua(); //Sensor_Peso_Reservatorio();
+        }
+      }
             
 			psm->last_event = ev_Init;
         
 			if(psm->last_event == ev_disp_food || psm->last_event == ev_NULL)
 			{
-			 psm->current_state = st_Disp;
+			 psm->current_state = disp_food;
 			}
 			else if(psm->last_event == ev_Init)
 			{
-			 psm->current_state = st_Init;
+			 psm->current_state = Init_food;
 			}
-        
-        default:
-            printf("ERROR! State not found!");
-            break;
     }
 }
