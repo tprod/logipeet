@@ -9,19 +9,15 @@
 
 
 /////////////////////////// HX711 - AGUA/////////////////////////////////////
-float PesoTaca_Agua() { 
-  HX711 scale;              // criamos variável scale do tipo HX711 
-  
-  scale.begin(DDOUT_Agua,SSCK_Agua);
+void setup_PesoTaca_Agua(HX711& scale) {
+  scale.begin(A1,A2);     // A1-DOUT ; A2-SCK
 
   scale.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
   scale.tare();
+}
 
-  Serial.print("\nPeso: ");
-  Serial.print(scale.get_units(),3);
-  Serial.print(" g");
-
-  return get_units();
+float PesoTaca_Agua(HX711& scale) { 
+  return scale.get_units();
 }
 
 
