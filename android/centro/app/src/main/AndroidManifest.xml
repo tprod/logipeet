@@ -12,18 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Centro">
 
-        <activity android:name=".splashscreen"></activity>
+        <activity android:name=".splashscreen"
+            android:theme="@style/Splash_Screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".Dispenser"></activity>
         <activity android:name=".leitor_codigo" />
         <activity android:name=".storage" />
         <activity android:name=".registo" />
         <activity android:name=".MainActivity2_menu" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
