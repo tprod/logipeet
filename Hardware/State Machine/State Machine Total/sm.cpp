@@ -118,7 +118,7 @@ void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável glob
           // Medir o peso da taça (reservoir_weigth)
           reservoir_weigth = PesoTaca_Reserv(); 
         }
-      }
+      
             
 			psm->last_event = ev_Init;
         
