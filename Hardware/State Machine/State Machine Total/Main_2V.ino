@@ -23,7 +23,7 @@ void setup() {
 void loop() {
    LCD();
    peso_taca_agua = PesoTaca_Agua();
-   food_weigth = PesoTaca_Comida();
+   // food_weigth = PesoTaca_Comida();
    
    if(peso_taca_agua < 200)
    {
