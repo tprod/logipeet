@@ -1,12 +1,14 @@
 #include "sm.h"
 #include "FuncoesComponentes.h"
 
-//typedef bool boolean;
-_Bool stateRelay;   // mudar depois!
+float Total_food = 1000;     // Quantity of food to dispense (from Rasp pi)
+int maxWater = 800;
 
-
-
-
+float bowl_weigth;    // Current weigth in the bowl
+float reservoir_weigth; 
+float Final_weigth_reservoir;
+float Food2Disp;
+  
 void sm_init(sm_t *psm, int initial_state)
 {
   psm->initial_state = initial_state;
@@ -35,12 +37,14 @@ void sm_execute_water(sm_t *psm)
   {
     case Init_water:
       {
-        stateRelay = false;
-        Relay(stateRelay);         // = relay->off();
-  
+         Relay(false);         // = relay->off();
+        // Relay(true);         // = relay->off();
+
+        
         if(psm->last_event == ev_disp_water)
         {
           psm->current_state = disp_water;
+          //Relay(true);
         }
         else if(psm->last_event == ev_NULL || psm->last_event == ev_Init)
         {
@@ -49,20 +53,20 @@ void sm_execute_water(sm_t *psm)
       }
 
     case disp_water:
-    {
-        int maxWater = 600;
-        printf("State: disp_water");
+    {   
+        Relay(true);
         
-        while(PesoTaca_Agua() < maxWater)
+        if(PesoTaca_Agua() > maxWater)
         {
-            stateRelay = true;
-            Relay(stateRelay);               // = relay->off();
-            printf("Relay on");
+           psm->last_event = ev_Init;           // = relay->off();
+           //Relay(false);
+        }
+        else
+        {
+          psm->last_event = ev_disp_water;
         }
         
-        printf("Water bowl full!");
         
-        psm->last_event = ev_Init;
         
         if(psm->last_event == ev_disp_water || psm->last_event == ev_NULL)
         {
@@ -79,18 +83,12 @@ void sm_execute_water(sm_t *psm)
 
 
 void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável global da main()
-{
-  float bowl_weigth;    // Current weigth in the bowl
-  float reservoir_weigth; 
-  float Final_weigth_reservoir;
-  float Food2Disp;
-    
+{    
    switch((sm_state_food_t)psm -> current_state)
    {
       case Init_food:
       {
-        // Chamar a função da ponte H para que o motor páre
-        Ponte_H(0);
+        Ponte_H(0);           // Chamar a função da ponte H para que o motor páre
   			
   			if(psm->last_event == ev_disp_food)
   			{
@@ -105,7 +103,7 @@ void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável glob
       case disp_food:
       {
         // Medir o peso da taça (bowl_weigth)
-        bowl_weigth = 150; //PesoTaca_Agua();
+        bowl_weigth = 100;
 
         // Medir o peso do reservatório (reservoir_weigth)
         reservoir_weigth = PesoTaca_Agua();
@@ -127,7 +125,7 @@ void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável glob
         while(reservoir_weigth < Final_weigth_reservoir)
         {
           // Medir o peso da taça (reservoir_weigth)
-          reservoir_weigth = PesoTaca_Agua(); //Sensor_Peso_Reservatorio();
+          reservoir_weigth = PesoTaca_Agua(); 
         }
       }
             
