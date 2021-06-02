@@ -6,7 +6,6 @@ sm_t water;
 sm_t food;
 
 int peso_taca_agua;
-int food_weigth;
 int Time2Disp = 0;  // Flag reveived from Rasp to Dispense
 
 void setup() {
@@ -23,7 +22,6 @@ void setup() {
 void loop() {
    LCD();
    peso_taca_agua = PesoTaca_Agua();
-   // food_weigth = PesoTaca_Comida();
    
    if(peso_taca_agua < 200)
    {
