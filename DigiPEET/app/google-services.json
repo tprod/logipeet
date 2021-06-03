@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83230012120",
+    "project_id": "digipeet-f3ac0",
+    "storage_bucket": "digipeet-f3ac0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83230012120:android:795b03de4e34758e1a9dad",
+        "android_client_info": {
+          "package_name": "com.example.digipeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83230012120-fl7agiqo5lmvqqe4iqkvr56uo5dsgf45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMUKfTHm1yn7Ytu_qiJmzPADmuSDIILFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83230012120-fl7agiqo5lmvqqe4iqkvr56uo5dsgf45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
