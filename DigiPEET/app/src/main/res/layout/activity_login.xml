@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.195"
         app:srcCompat="@drawable/logo" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="159dp"
         android:backgroundTint="#FFFFFF"
-        android:text="sign_up"
+        android:text="Sign Up"
         android:textColor="#FF5722"
         app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
