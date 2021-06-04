@@ -9,32 +9,18 @@
     tools:context=".menu_inicial">
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="190dp"
-        android:layout_height="80dp"
-        android:backgroundTint="#FF794F"
-        android:text=" First on schedule  "
-        android:textAlignment="center"
-        android:textColor="#0C0C0C"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
-
-    <Button
         android:id="@+id/insert_product"
         android:layout_width="190dp"
         android:layout_height="80dp"
-        android:layout_marginTop="92dp"
-        android:backgroundTint="#38D6D1"
+        android:layout_marginTop="164dp"
+        android:backgroundTint="#FF794F"
         android:text=" PEET Managment  "
         android:textColor="#000000"
+        app:layout_constrainedHeight="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button6"
@@ -71,5 +57,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Storage" />
+
+    <Button
+        android:id="@+id/LogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="297dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FF3F51B5"
+        android:text="Log Out"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
