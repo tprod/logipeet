@@ -31,6 +31,22 @@ public class menu_inicial extends AppCompatActivity {
                 startActivity(new Intent(menu_inicial.this, Login.class));
             }
         });
+
+        Button Storage = findViewById(R.id.Storage);
+        Storage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(menu_inicial.this, storage.class));
+            }
+        });
+
+        Button calendar = findViewById(R.id.schedule);
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(menu_inicial.this, com.example.digipeet.calendar.class));
+            }
+        });
     }
 
     @Override

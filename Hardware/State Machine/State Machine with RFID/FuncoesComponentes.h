@@ -9,15 +9,15 @@
 #define DOUT_Water A1      
 #define SCK_Water  A2
 
-//#define DOUT_Food  A3      
-//#define SCK_Food A4
-//
-//#define DOUT_Reserv  A5      
-//#define SCK_Reserv A6
+#define DOUT_Food  A3      
+#define SCK_Food A4
 
-extern HX711 scaleWater;
-//extern HX711 scaleFood;
-//extern HX711 scaleReserv;
+#define DOUT_Reserv  A5      
+#define SCK_Reserv A6
+
+//extern HX711 scaleWater;
+extern HX711 scaleFood;
+extern HX711 scaleReserv;
 
 
 /////////////////////////// RELAY /////////////////////////////////////
@@ -36,12 +36,17 @@ extern RelayModule* relay;
 #define SL_PIN 5
 
 
+/////////////////////////////// Leitor RFID ///////////////////////////////////////
+#define SS_PIN 10
+#define RST_PIN 4
+
+
 
 // Componentes
 void setup_Peso();
 float PesoTaca_Agua();
-//float PesoTaca_Comida();
-//float PesoTaca_Reserv();
+float PesoTaca_Comida();
+float PesoTaca_Reserv();
 void setup_Relay();
 void Relay(bool stateRelay);
 void setup_Ponte_H();

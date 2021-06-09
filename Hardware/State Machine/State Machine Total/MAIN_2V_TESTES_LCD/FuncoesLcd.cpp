@@ -1,4 +1,5 @@
-#include <LiquidCrystal.h>    
+#include <LiquidCrystal.h> 
+//#include <SPI.h>   
 #include "FuncoesComponentes.h"
 #include "FuncoesLcd.h"
 
@@ -8,7 +9,7 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 int lcd_key = 0;
 int adc_key_in = 0;
-int ID = 93158;
+unsigned int ID = 65535;
 int escolha = 1;
 int state = 5;
 int last_state = 5;
@@ -16,7 +17,7 @@ int last_state = 5;
 
 //int PESO_Comida;
 //int PESO_Reserv;
-int PESO_Agua;
+//int PESO_Agua;
 
 
 int read_LCD_buttons() {
@@ -60,19 +61,19 @@ void LCD() {
   }
   last_state = state;
 
-  if (escolha % 5 == 0)
+  if (escolha % 7 == 0)
   {
-    escolha = escolha + pow(-1, escolha) * 4;
+    escolha = escolha + pow(-1, escolha) * 6;
   }
 
   switch (escolha)
   {
     case 1:
       {
-        lcd.print("Peso na Taca: ");
+        lcd.print("Taca da Comida: ");
         lcd.setCursor(0, 1);
         lcd.print(PesoTaca_Agua());
-        lcd.print("Kg");
+        lcd.print("g");
         break;
       }
       
@@ -88,13 +89,49 @@ void LCD() {
     case 3:
       {
         lcd.print("Reserv Agua: ");
-        lcd.setCursor(0, 1);
-        lcd.print(PesoTaca_Agua());
-        lcd.print("Kg");
+        lcd.setCursor(3, 1);
+        if (Sensor_Nivel() == true)
+          lcd.print("Cheio");
+        else
+          lcd.print("vazio");
         break;
       }
-      
-    case 4:
+
+   case 4:
+    {
+      lcd.print("Disp Comida? ");
+      if(lcd_key == btnSELECT || Flag_DispComida == true)
+      {
+        lcd.setCursor(0, 1);
+        lcd.print("A dispensar...");
+        Flag_DispComida = true;
+      }
+      else if (Flag_DispComida == false)
+      {
+        lcd.setCursor(0, 1);
+        lcd.print("              ");
+      }    
+      break;
+    }
+
+    case 5:
+    {
+      lcd.print("Disp Agua? ");
+      if(lcd_key == btnSELECT || Flag_DispAgua == true)
+      {
+        lcd.setCursor(0, 1);
+        lcd.print("A dispensar...");
+        Flag_DispAgua = true;
+      }
+      else if (Flag_DispAgua == false)
+      {
+        lcd.setCursor(0, 1);
+        lcd.print("              ");
+      }     
+      break;
+    }
+    
+    case 6:
       {
         lcd.print("ID: ");
         lcd.print(ID);

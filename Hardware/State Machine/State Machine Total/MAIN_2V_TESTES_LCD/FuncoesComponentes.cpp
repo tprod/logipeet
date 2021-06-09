@@ -3,10 +3,12 @@
 #include <SPI.h>
 #include "FuncoesComponentes.h"
 
+bool Flag_DispAgua = false;
+bool Flag_DispComida = false;
 
 HX711 scaleWater;
-//HX711 scaleFood;
-//HX711 scaleReserv;
+HX711 scaleFood;
+HX711 scaleReserv;
 
 RelayModule* relay;
 
@@ -15,30 +17,30 @@ RelayModule* relay;
 /////////////////////////// HX711 - AGUA/////////////////////////////////////
 void setup_Peso() {
   scaleWater.begin(DOUT_Water,SCK_Water);          
-  // scaleFood.begin(DOUT_Food,SCK_Food);
-  // scaleReserv.begin(DOUT_Reserv,SCK_Reserv);
+  scaleFood.begin(DOUT_Food,SCK_Food);
+  scaleReserv.begin(DOUT_Reserv,SCK_Reserv);
 
   scaleWater.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
   scaleWater.tare();
 
-//  scaleFood.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
-//  scaleFood.tare();
-//
-//  scaleReserv.set_scale(-463090);    // gramas: -463.090  ;  kilogramas: -463090
-//  scaleReserv.tare();
+  scaleFood.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
+  scaleFood.tare();
+
+  scaleReserv.set_scale(-463090);    // gramas: -463.090  ;  kilogramas: -463090
+  scaleReserv.tare();
 }
 
 float PesoTaca_Agua() { 
   return scaleWater.get_units();
 }
 
-//float PesoTaca_Comida() { 
-//  return scaleFood.get_units();
-//}
-//
-//float PesoTaca_Reserv() { 
-//  return scaleReserv.get_units();
-//}
+float PesoTaca_Comida() { 
+  return scaleFood.get_units();
+}
+
+float PesoTaca_Reserv() { 
+  return scaleReserv.get_units();
+}
 
 /////////////////////////// RELAY //////////////////////////////////
 void setup_Relay()

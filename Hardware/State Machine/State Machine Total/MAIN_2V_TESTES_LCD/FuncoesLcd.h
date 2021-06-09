@@ -13,7 +13,7 @@
 
 //extern int PESO_Comida;
 //extern int PESO_Reserv;
-extern int PESO_Agua;
+//extern int PESO_Agua;
 
 int read_LCD_buttons();
 void setup_LCD();

@@ -7,6 +7,9 @@ typedef enum {Init_water, disp_water} sm_state_water_t;
 typedef enum {ev_NULL, ev_disp_food, ev_disp_water, ev_Init} sm_event_t;
 
 extern float Total_food;     
+extern int a;
+extern int i;
+extern int b;
 
 typedef struct {
   int current_state;
