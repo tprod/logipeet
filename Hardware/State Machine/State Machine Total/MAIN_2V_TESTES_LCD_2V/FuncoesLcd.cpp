@@ -219,6 +219,7 @@ void LCD() {
                 pos_min = pos_min - pow(-1, pos_min) * 12;
               }
               
+            lcd.setCursor(1, 1);  
             lcd.print(array_horas[pos_horas]);
             lcd.print(":");
             lcd.print(array_min[pos_min]);  
