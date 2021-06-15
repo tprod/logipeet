@@ -209,14 +209,14 @@ void LCD() {
               }     
             last_state_case7 = state_case7;
 
-              if (pos_horas % 25 == 0)
+              if ((pos_horas + 1) % 25 == 0)
               {
-                pos_horas = pos_horas + pow(-1, pos_horas) * 24;
+                pos_horas = pos_horas - pow(-1, pos_horas) * 24;
               }
 
-              if (pos_min % 13 == 0)
+              if ((pos_min + 1) % 13 == 0)
               {
-                pos_min = pos_min + pow(-1, pos_min) * 12;
+                pos_min = pos_min - pow(-1, pos_min) * 12;
               }
               
             lcd.print(array_horas[pos_horas]);
