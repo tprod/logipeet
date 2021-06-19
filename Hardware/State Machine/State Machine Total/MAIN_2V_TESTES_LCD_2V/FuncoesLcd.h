@@ -11,12 +11,22 @@
 
 //extern LiquidCrystal lcd;
 
-extern int horasInit;
-extern int minInit;
+extern int horasInit1;
+extern int minInit1;
+extern int horasInit2;
+extern int minInit2;
+extern int horasInit3;
+extern int minInit3;
+extern int pesoInit;
 
-//extern int PESO_Comida;
-//extern int PESO_Reserv;
-//extern int PESO_Agua;
+// TESTES:
+extern int cont2;
+extern int pos_horas2;
+extern int pos_min2;
+
+
+extern int a;
+extern int b;
 
 int read_LCD_buttons();
 void setup_LCD();
