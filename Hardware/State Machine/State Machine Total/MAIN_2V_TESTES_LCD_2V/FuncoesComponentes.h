@@ -35,7 +35,7 @@ extern RelayModule* relay;
 
 
 /////////////////////////// Sensor de Nível //////////////////////////////////
-#define SL_PIN 5
+#define SL_PIN 2
 
 
 
