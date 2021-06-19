@@ -17,22 +17,29 @@ void setup() {
   setup_Peso();
   setup_Relay();
   setup_Ponte_H();
+  setup_Sensor_Nivel();
   setup_LCD();
   
   sm_init(&water, Init_water);
   sm_init(&food, Init_food);
 
-  horasInit = 12;
-  minInit = 15;
+  horasInit1 = 7;
+  minInit1 = 00;
+  horasInit2 = 13;
+  minInit2 = 30;
+  horasInit3 = 22;
+  minInit3 = 15;
+  pesoInit = 450;
+
+  a = 0;
+  b = 0;
+
 }
 
 void loop() {
    LCD();
    peso_taca_agua = PesoTaca_Agua();
-   Serial.print("\nPeso taca:");
-   Serial.print(peso_taca_agua);
-   Serial.print("\nTime2Disp: ");
-   Serial.print(Time2Disp);
+   
    
    if(peso_taca_agua < 200 || Flag_DispAgua == true)
    {
@@ -56,31 +63,37 @@ void loop() {
    
    if(Time2Disp == 1 || Flag_DispComida == true)
    {
-    sm_send_event(&food,ev_disp_food);
+    sm_send_event(&food,ev_calc_food);
    }
    else
    {
-    sm_send_event(&food,ev_Init);
+    sm_send_event(&food,ev_NULL);
    }
-
-
-    Serial.print("\n T: ");
-    Serial.print(T);
-    
-    Serial.print("\n b: ");
-    Serial.print(b);
-
-    
-   Serial.print("\n a: ");
-    Serial.print(a);
-    
-
-    Serial.print("\n i: ");
-    Serial.print(i);
    
+    //Serial.print("\n\n a: ");
+    //Serial.print(a);
 
-    Serial.print("\nEstado:");
-    Serial.print(sm_get_current_state(&water));
+    //Serial.print("\n b: ");
+    //Serial.print(b);
+    
+    Serial.print("\n select: ");
+    Serial.print(cont2);
+
+    Serial.print("\n\n Horas: ");
+    Serial.print(horasInit2);
+
+    Serial.print("\n Min: ");
+    Serial.print(minInit2);
+
+    Serial.print("\n Pos_Horas: ");
+    Serial.print(pos_horas2);
+
+    Serial.print("\n Pos_Min: ");
+    Serial.print(pos_min2);
+    Serial.print("\n\n");
+
+    
+    
     sm_execute_water(&water);
     sm_execute_food(&food);
   
