@@ -18,8 +18,12 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.core.FirestoreClient
 import com.google.firebase.ktx.Firebase
+
 import org.w3c.dom.Text
 
 private const val CAMERA_REQUEST_CODE = 101
@@ -50,12 +54,16 @@ class code_scanner : AppCompatActivity() {
 
     private fun saveFirestore(product: String, quantity:String, Bcode: String) {
         val db = FirebaseFirestore.getInstance()
+
+        val current = Firebase.auth.currentUser
+        val userID = current?.uid.toString()
+
         val user: MutableMap<String, Any> = HashMap()
         user["Product"] = product
         user["Quantity"] = quantity
         user["code"] = Bcode
 
-        db.collection("users")
+        db.collection(userID)
             .add(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "Product successfully added", Toast.LENGTH_SHORT).show()
