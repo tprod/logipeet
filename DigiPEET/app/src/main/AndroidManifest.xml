@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DigiPEET">
         <activity android:name=".code_scanner"></activity>
-        <activity android:name=".AddProduct" />
         <activity android:name=".calendar" />
         <activity android:name=".storage" />
         <activity android:name=".Login">

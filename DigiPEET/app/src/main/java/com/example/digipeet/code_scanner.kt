@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.TestLooperManager
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -16,6 +17,10 @@ import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 private const val CAMERA_REQUEST_CODE = 101
 
@@ -30,11 +35,36 @@ class code_scanner : AppCompatActivity() {
         setupPermissions()
         codeScanner()
 
-        val test = findViewById<Button>(R.id.add)
-        test.setOnClickListener {
-            val intent = Intent(this, menu_inicial::class.java)
+        val add = findViewById<Button>(R.id.add)
+        add.setOnClickListener {
+            val product = findViewById<TextInputEditText>(R.id.product).text.toString()
+            val quantity = findViewById<TextInputEditText>(R.id.quantity).text.toString()
+            val Bcode: String = findViewById<TextView>(R.id.bar_code).text.toString()
+
+            saveFirestore(product, quantity, Bcode)
+
+            val intent = Intent(this, storage::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun saveFirestore(product: String, quantity:String, Bcode: String) {
+        val db = FirebaseFirestore.getInstance()
+        val user: MutableMap<String, Any> = HashMap()
+        user["Product"] = product
+        user["Quantity"] = quantity
+        user["code"] = Bcode
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Product successfully added", Toast.LENGTH_SHORT).show()
+            }
+
+            .addOnFailureListener {
+                Toast.makeText(this, "Product failed to be added", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
     private fun codeScanner(){
@@ -55,7 +85,7 @@ class code_scanner : AppCompatActivity() {
 
 
                     // Test purposes only
-                    findViewById<TextView>(R.id.tv_textView).text = it.text
+                    findViewById<TextView>(R.id.bar_code).text = it.text
                 }
             }
 

@@ -27,10 +27,29 @@ public class storage extends AppCompatActivity {
         adicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(storage.this, AddProduct.class));
+                startActivity(new Intent(storage.this, code_scanner.class));
             }
         });
 
+        remover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        procura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        inventario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
