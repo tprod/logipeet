@@ -2,14 +2,13 @@
 #define sm_h
 
 // State Machine
-typedef enum {Init_food, disp_food} sm_state_food_t;
+typedef enum {Init_food, calc_food, disp_food} sm_state_food_t;
 typedef enum {Init_water, disp_water} sm_state_water_t;
-typedef enum {ev_NULL, ev_disp_food, ev_disp_water, ev_Init} sm_event_t;
+typedef enum {ev_NULL, ev_disp_food, ev_calc_food, ev_disp_water, ev_Init} sm_event_t;
 
+extern float Final_weigth_reservoir;
 extern float Total_food;     
-extern int a;
-extern int i;
-extern int b;
+
 
 typedef struct {
   int current_state;

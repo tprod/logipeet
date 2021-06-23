@@ -35,8 +35,11 @@ extern RelayModule* relay;
 
 
 /////////////////////////// Sensor de Nível //////////////////////////////////
-#define SL_PIN 5
+#define SL_PIN 2
 
+/////////////////////////////// Leitor RFID ///////////////////////////////////////
+#define SS_PIN 53
+#define RST_PIN 48
 
 
 // Componentes
@@ -50,6 +53,8 @@ void setup_Ponte_H();
 void Ponte_H(int Flag);
 void setup_Sensor_Nivel();
 int Sensor_Nivel();
+void setup_RFID();
+String RFID();
 
 
 #endif

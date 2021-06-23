@@ -90,7 +90,7 @@ void LCD() {
       {
         lcd.print("Reserv Agua: ");
         lcd.setCursor(3, 1);
-        if (Sensor_Nivel() == true)
+        if (Sensor_Nivel() == 1)
           lcd.print("Cheio");
         else
           lcd.print("vazio");

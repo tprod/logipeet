@@ -3,9 +3,6 @@
 
 float Total_food = 800;     // Quantity of food to dispense (from Rasp pi)
 int maxWater = 800;
-int i = 0;
-int a = 0;
-int b = 0;
 float bowl_weigth;    // Current weigth in the bowl
 float reservoir_weigth; 
 float Final_weigth_reservoir;
@@ -40,7 +37,7 @@ void sm_execute_water(sm_t *psm)
     case Init_water:
       {
          Relay(false);         // = relay->off();
-        b = b+1;
+        
         
         if(psm->last_event == ev_disp_water)
         {
@@ -61,13 +58,13 @@ void sm_execute_water(sm_t *psm)
         {
            psm->last_event = ev_Init;           // = relay->off();
            Flag_DispAgua = false;
-           i = i+1;
+           
         }
         else
         {
           psm->last_event = ev_disp_water;
           Flag_DispAgua = true;
-          a=a+1;
+          
         }
         
         
@@ -94,62 +91,93 @@ void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável glob
       case Init_food:
       {
         Ponte_H(0);           // Chamar a função da ponte H para que o motor páre
-  			//b = b+1;
-  			if(psm->last_event == ev_disp_food)
-  			{
-  			 psm->current_state = disp_food;
-  			}
-  			else if(psm->last_event == ev_NULL || psm->last_event == ev_Init)
-  			{
-  			 psm->current_state = Init_food;
-  			}
+
+        if(psm->last_event == ev_disp_food)
+        {
+         psm->current_state = disp_food;
+        }
+        else if(psm->last_event == ev_calc_food)
+        {
+         psm->current_state = calc_food;
+        }
+        else if(psm->last_event == ev_NULL || psm->last_event == ev_Init)
+        {
+         psm->current_state = Init_food;
+        }
 
        break;
       }
 
-      case disp_food:
+
+      case calc_food:
       {
-        // Medir o peso da taça (bowl_weigth)
+              // Medir o peso da taça (bowl_weigth)
         bowl_weigth = 100;
 
-        // Medir o peso do reservatório (reservoir_weigth)
+              // Medir o peso do reservatório (reservoir_weigth)
         reservoir_weigth = PesoTaca_Agua();
-        //reservoir_weigth = 1240;
-        // Calcular quantidade de comida
+              //reservoir_weigth = 1240;
+              // Calcular quantidade de comida
          Food2Disp = Total_food - bowl_weigth;
-        //Food2Disp = 210;
-        //Calculo do peso final do reservatorio
+              //Food2Disp = 210;
+              //Calculo do peso final do reservatorio
         Final_weigth_reservoir = reservoir_weigth - Food2Disp;
 
 //        if(Total_food == bowl_weigth)
 //        {
-//          printf("Warning! Bowl already full!");
+          
 //        }
 
+        psm->last_event = ev_disp_food;
+        
+        
+        if(psm->last_event == ev_calc_food || psm->last_event == ev_NULL)
+        {
+         psm->current_state = calc_food;
+        }
+        else if (psm->last_event == ev_disp_food)
+        {
+          psm->current_state = disp_food;
+        }
+        else if(psm->last_event == ev_Init)
+        {
+         psm->current_state = Init_food;
+        }
+       break;
+     
+      }
+
+
+      case disp_food:
+      {
         // Chamar a função da ponte H para que o motor comece a rodar
         Ponte_H(1);
-
+        
         if(PesoTaca_Agua() > Final_weigth_reservoir)
         {
           psm->last_event = ev_NULL;           // = relay->off();
-          Flag_DispAgua = true;
+          Flag_DispComida = true;
         }
         else
         {
           psm->last_event = ev_Init;           // = relay->off();
-           Flag_DispAgua = false;
+           Flag_DispComida = false;
         }
         
             
         
-			if(psm->last_event == ev_disp_food || psm->last_event == ev_NULL)
-			{
-			 psm->current_state = disp_food;
-			}
-			else if(psm->last_event == ev_Init)
-			{
-			 psm->current_state = Init_food;
-			}
+      if(psm->last_event == ev_disp_food || psm->last_event == ev_NULL)
+      {
+       psm->current_state = disp_food;
+      }
+      else if(psm->last_event == ev_calc_food)
+      {
+       psm->current_state = calc_food;
+      }
+      else if(psm->last_event == ev_Init)
+      {
+       psm->current_state = Init_food;
+      }
      break;
     }
   }
