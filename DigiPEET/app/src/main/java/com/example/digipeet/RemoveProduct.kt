@@ -26,49 +26,45 @@ import org.w3c.dom.Text
 
 private const val CAMERA_REQUEST_CODE = 101
 
-class code_scanner : AppCompatActivity() {
+class RemoveProduct : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_code_scanner)
+        setContentView(R.layout.activity_remove_product)
 
         setupPermissions()
         codeScanner()
 
         val add = findViewById<Button>(R.id.add)
         add.setOnClickListener {
-            val product = findViewById<TextInputEditText>(R.id.product).text.toString()
-            val quantity = findViewById<TextInputEditText>(R.id.quantity).text.toString()
             val Bcode: String = findViewById<TextView>(R.id.bar_code).text.toString()
 
-            saveFirestore(product, quantity, Bcode)
+            deleteFirestore(Bcode)
 
             val intent = Intent(this, storage::class.java)
             startActivity(intent)
         }
     }
 
-    private fun saveFirestore(product: String, quantity:String, Bcode: String) {
+    private fun deleteFirestore(Bcode: String) {
         val db = FirebaseFirestore.getInstance()
 
         val current = Firebase.auth.currentUser
         val userID = current?.uid.toString()
 
         val user: MutableMap<String, Any> = HashMap()
-        user["Product"] = product
-        user["Quantity"] = quantity
         user["code"] = Bcode
 
         db.collection(userID).document(Bcode)
-            .set(user)
+            .delete()
             .addOnSuccessListener {
-                Toast.makeText(this, "Product successfully added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Product successfully deleted", Toast.LENGTH_SHORT).show()
             }
 
             .addOnFailureListener {
-                Toast.makeText(this, "Product failed to be added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Product failed to be deleted", Toast.LENGTH_SHORT).show()
             }
 
     }

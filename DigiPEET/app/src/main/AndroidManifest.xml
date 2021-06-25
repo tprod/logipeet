@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigiPEET">
-        <activity android:name=".code_scanner"></activity>
+        <activity android:name=".RemoveProduct"></activity>
+        <activity android:name=".code_scanner" />
         <activity android:name=".calendar" />
         <activity android:name=".storage" />
         <activity android:name=".Login">

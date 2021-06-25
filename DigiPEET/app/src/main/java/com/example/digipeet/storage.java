@@ -34,7 +34,7 @@ public class storage extends AppCompatActivity {
         remover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(storage.this, RemoveProduct.class));
             }
         });
 

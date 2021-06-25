@@ -11,7 +11,7 @@
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/code_scanner"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="600dp"
         app:autoFocusButtonColor="@android:color/white"
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
@@ -25,46 +25,14 @@
         app:frameThickness="2dp"
         app:maskColor="#77000000"/>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="  Insert product name  "
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/code_scanner"
-        android:layout_margin="30dp"
-        android:backgroundTint="#FF5722"
-        android:textColor="#95000000"
-        android:textColorHighlight="#88FFFFFF"
-        android:inputType="text"
-        android:textColorHint="#94000000"
-        android:textColorLink="#2979FF"
-        android:textIsSelectable="true"/>
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="       Insert Quantity      "
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:layout_below="@+id/product"
-        android:backgroundTint="#FF5722"
-        android:textColor="#95000000"
-        android:textColorHighlight="#88FFFFFF"
-        android:inputType="number"
-        android:textColorHint="#94000000"
-        android:textColorLink="#2979FF"
-        android:textIsSelectable="true"/>
-
     <Button
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="     Add Product     "
+        android:text="   Remove Product   "
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/quantity"
-        android:layout_marginVertical="40dp"
+        android:layout_below="@+id/bar_code"
+        android:layout_marginVertical="20dp"
         android:backgroundTint="#FF3F51B5"
         android:textAlignment="center"
         android:textColor="@color/white"/>
@@ -75,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/code_scanner"
         android:layout_centerHorizontal="true"
-        android:layout_margin="0dp"
+        android:layout_marginVertical="0dp"
         android:text="Scan something..."
         android:textColor="@color/black"/>
 
