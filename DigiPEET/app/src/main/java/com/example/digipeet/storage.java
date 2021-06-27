@@ -41,7 +41,7 @@ public class storage extends AppCompatActivity {
         procura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(storage.this, ViewProduct.class));
             }
         });
 

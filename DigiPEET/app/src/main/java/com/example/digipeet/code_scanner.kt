@@ -59,7 +59,7 @@ class code_scanner : AppCompatActivity() {
         val user: MutableMap<String, Any> = HashMap()
         user["Product"] = product
         user["Quantity"] = quantity
-        user["code"] = Bcode
+        user["Code"] = Bcode
 
         db.collection(userID).document(Bcode)
             .set(user)

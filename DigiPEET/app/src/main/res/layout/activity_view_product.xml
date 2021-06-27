@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ViewProduct">
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Which product do you want to search"
+        android:textSize="20sp"
+        android:textColor="#FF6E40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="68dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/SearchProduct"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:hint="  Insert product name  "
+        android:backgroundTint="#FF5722"
+        android:textColor="#95000000"
+        android:textColorHighlight="#88FFFFFF"
+        android:inputType="text"
+        android:textColorHint="#94000000"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"/>
+
+    <Button
+        android:id="@+id/procura"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SearchProduct"
+        android:layout_marginVertical="30dp"
+        android:backgroundTint="#FF3F51B5"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Product: "
+        android:textColor="#FF6E40"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/S_Product"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/procura" />
+
+    <TextView
+        android:id="@+id/S_Product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/procura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="100dp"
+        android:text="Quantity: "
+        android:textColor="#FF6E40"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/S_Quantity"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/S_Quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/S_Product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="528dp"
+        android:text="Bar Code: "
+        android:textColor="#FF6E40"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/S_Code"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/S_Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/S_Quantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
