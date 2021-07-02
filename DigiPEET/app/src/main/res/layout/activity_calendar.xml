@@ -9,13 +9,13 @@
     tools:context=".calendar">
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_date"
-            android:text="Select Date"
-            android:textSize="40sp"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/black"/>
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Select Date"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
 
     <EditText
         android:id="@+id/et_date"

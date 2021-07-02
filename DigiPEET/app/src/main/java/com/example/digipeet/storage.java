@@ -48,7 +48,7 @@ public class storage extends AppCompatActivity {
         inventario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(storage.this, Inventory.class));
             }
         });
     }
