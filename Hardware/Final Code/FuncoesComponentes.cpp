@@ -20,13 +20,13 @@ void setup_Peso() {
   scaleFood.begin(DOUT_Food,SCK_Food);
   scaleReserv.begin(DOUT_Reserv,SCK_Reserv);
 
-  scaleWater.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
+  scaleWater.set_scale(463.090);         // gramas: 463.090  ;  kilogramas: 463090
   scaleWater.tare();
 
-  scaleFood.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
+  scaleFood.set_scale(-463.090);         // gramas: -463.090  ;  kilogramas: -463090
   scaleFood.tare();
 
-  scaleReserv.set_scale(-463090);    // gramas: -463.090  ;  kilogramas: -463090
+  scaleReserv.set_scale(-224920.00);     // gramas: -224.920  ;  kilogramas: -224920.00
   scaleReserv.tare();
 }
 
