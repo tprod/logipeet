@@ -1,16 +1,14 @@
 #include <HX711.h>   
 #include <RelayModule.h>
 #include <SPI.h>
-#include "FuncoesComponentes.h"
-
 #include <MFRC522.h>
 #include <MFRC522Extended.h>
 #include <require_cpp11.h>
 #include <deprecated.h>
+#include "FuncoesComponentes.h"
 
 bool Flag_DispAgua = false;
 bool Flag_DispComida = false;
-String content= "";
 
 HX711 scaleWater;
 HX711 scaleFood;
@@ -18,6 +16,10 @@ HX711 scaleReserv;
 
 RelayModule* relay;
 
+MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
+String content= "";
+
+int pesoInit;
 
 
 /////////////////////////// HX711 - AGUA/////////////////////////////////////
@@ -26,13 +28,13 @@ void setup_Peso() {
   scaleFood.begin(DOUT_Food,SCK_Food);
   scaleReserv.begin(DOUT_Reserv,SCK_Reserv);
 
-  scaleWater.set_scale(463.090);         // gramas: 463.090  ;  kilogramas: 463090
+  scaleWater.set_scale(463.090);    // gramas: 463.090  ;  kilogramas: 463090
   scaleWater.tare();
 
-  scaleFood.set_scale(-463.090);         // gramas: -463.090  ;  kilogramas: -463090
+  scaleFood.set_scale(-463.090);    // gramas: -463.090  ;  kilogramas: -463090
   scaleFood.tare();
 
-  scaleReserv.set_scale(-224920.00);     // gramas: -224.920  ;  kilogramas: -224920.00
+  scaleReserv.set_scale(-224.920);    // gramas: -224.920  ;  kilogramas: -224920.00
   scaleReserv.tare();
 }
 
@@ -41,11 +43,11 @@ float PesoTaca_Agua() {
 }
 
 float PesoTaca_Comida() { 
-  return scaleFood.get_units();
+  return round(scaleFood.get_units());
 }
 
 float PesoTaca_Reserv() { 
-  return scaleReserv.get_units();
+  return round(scaleReserv.get_units());
 }
 
 /////////////////////////// RELAY //////////////////////////////////
@@ -106,9 +108,9 @@ int Sensor_Nivel()
 
 
 
-/////////////////////////// Leitor RFID ////////////////////////////////////
-MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 instance.
 
+
+/////////////////////////// Leitor RFID ////////////////////////////////////
 void setup_RFID()
 {
     SPI.begin(); // Initiate SPI bus, where SCK and MOSI are low and SS(slave select) is high
