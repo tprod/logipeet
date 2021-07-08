@@ -3,24 +3,36 @@ package com.example.digipeet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class calendar extends AppCompatActivity {
         TextView tvDate;
         EditText etDate;
         DatePickerDialog.OnDateSetListener setListener;
-       // TextInputEditText textc = findViewById(R.id.text);
+        //String texts = findViewById(R.id.text).toString();
+
+        FirebaseFirestore db;
+        FirebaseAuth mAuth;
+        String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +40,13 @@ public class calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         tvDate = findViewById(R.id.tv_date);
-        etDate = findViewById(R.id.et_date);
+        //etDate = findViewById(R.id.et_date);
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        userID = mAuth.getCurrentUser().getUid();
+
+
 
         Calendar calender = Calendar.getInstance();
         final int year = calender.get(Calendar.YEAR);
@@ -55,7 +73,7 @@ public class calendar extends AppCompatActivity {
 
             }
         };
-        etDate.setOnClickListener(new View.OnClickListener() {
+        /*etDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -69,7 +87,27 @@ public class calendar extends AppCompatActivity {
                 }, year, month,day);
                 datePickerDialog.show();
             }
+        });*/
+
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(calendar.this, menu_inicial.class));
+            }
         });
+
+        // adicionar evento à base de dados
+
+        /*DocumentReference documentReference = db.collection(userID).document("Events");
+        Map<String, Object> Event = new HashMap<>();
+        Event.put(texts, );
+
+        documentReference.set(Event).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d("LOG", "Event added successfully");
+            }
+        });*/
     }
 }
 

@@ -25,6 +25,8 @@
         app:frameThickness="2dp"
         app:maskColor="#77000000"/>
 
+
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/product"
         android:layout_width="wrap_content"

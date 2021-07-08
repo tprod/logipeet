@@ -215,4 +215,17 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="5dp"
+        android:background="#00FFFFFF"
+        android:outlineSpotShadowColor="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:tint="#FF3F51B5"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

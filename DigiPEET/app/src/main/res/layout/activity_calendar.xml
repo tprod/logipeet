@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,12 +13,16 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
+        android:textAlignment="center"
         android:text="Select Date"
-        android:textColor="@color/black"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:backgroundTint="#FF5722"
+        android:textColor="#95000000"
+        android:textColorHighlight="#88FFFFFF"
+        android:inputType="text"
+        android:textColorHint="#94000000"/>
 
-    <EditText
+    <!--<EditText
         android:id="@+id/et_date"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -26,15 +31,42 @@
         android:textSize="30sp"
         android:layout_below="@+id/tv_date"
         android:backgroundTint="@color/black"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"/>-->
 
    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/text"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-       android:layout_below="@+id/et_date"
-       android:backgroundTint="@color/black"
-       android:textColor="@color/black"/>
+        android:textSize="20sp"
+       android:layout_marginTop="40dp"
+       android:layout_below="@+id/tv_date"
+       android:backgroundTint="#FF5722"
+       android:textColor="#95000000"
+       android:textColorHighlight="#88FFFFFF"
+       android:inputType="text"
+       android:textColorHint="#94000000"/>
 
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        android:translationX="-90dp"
+        android:translationY="-150dp"
+        android:background="#00FFFFFF"
+        app:tint="#FF3F51B5"
+        android:scaleY="2"
+        android:scaleX="2"/>
+
+    <Button
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add event"
+        android:textSize="17sp"
+        android:layout_below="@+id/text"
+        android:layout_marginTop="200dp"
+        android:translationX="40dp"
+        android:backgroundTint="#FF3F51B5"
+        android:textColor="@color/white"/>
 </RelativeLayout>

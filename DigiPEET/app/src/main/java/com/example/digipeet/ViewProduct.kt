@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.TestLooperManager
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -35,6 +36,12 @@ class ViewProduct : AppCompatActivity() {
             val Search = findViewById<TextInputEditText>(R.id.SearchProduct).text.toString()
 
             readFirestore(Search)
+        }
+
+        val back = findViewById<ImageButton>(R.id.back)
+        back.setOnClickListener {
+            val intent = Intent(this, storage::class.java)
+            startActivity(intent)
         }
     }
 
