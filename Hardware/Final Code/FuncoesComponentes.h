@@ -3,19 +3,19 @@
 #include <HX711.h>
 #include <RelayModule.h>
 
-
+extern int pesoInit;
 extern bool Flag_DispAgua;
 extern bool Flag_DispComida;
 
 /////////////////////////// HX711 /////////////////////////////////////
-#define DOUT_Water A1      
-#define SCK_Water  A2
+#define DOUT_Water A5      
+#define SCK_Water  A6
 
 #define DOUT_Food  A3      
 #define SCK_Food A4
 
-#define DOUT_Reserv  A5      
-#define SCK_Reserv A6
+#define DOUT_Reserv  A1      
+#define SCK_Reserv A2
 
 //extern HX711 scaleWater;
 //extern HX711 scaleFood;
@@ -38,6 +38,10 @@ extern RelayModule* relay;
 #define SL_PIN 2
 
 
+/////////////////////////////// Leitor RFID ///////////////////////////////////////
+#define SS_PIN  53
+#define RST_PIN  48
+
 
 // Componentes
 void setup_Peso();
@@ -50,6 +54,8 @@ void setup_Ponte_H();
 void Ponte_H(int Flag);
 void setup_Sensor_Nivel();
 int Sensor_Nivel();
+void setup_RFID();
+String RFID();
 
 
 #endif

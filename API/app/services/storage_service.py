@@ -7,9 +7,9 @@ def get():
 
     return Storage.query.all()
 
-def post(body):
+def post(name_product,code_product,weight,amount):
 
-    storage = Storage(**body)
+    storage = Storage(name_product,code_product,weight,amount)
     db.session.add(storage)
     db.session.commit()
     return storage

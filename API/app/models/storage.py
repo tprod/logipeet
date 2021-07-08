@@ -14,3 +14,11 @@ class Storage(db.Model):
     amount = db.Column(db.Integer , nullable=False)
     def as_dict(self):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
+    def __init__(self,name_product,code_product,weight,amount):
+
+            self.name_product = name_product
+            self.code_product = code_product
+            self.weight = weight
+            self.amount = amount

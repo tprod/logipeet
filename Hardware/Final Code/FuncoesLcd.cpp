@@ -36,7 +36,6 @@ int horasInit3;
 int minInit1;
 int minInit2;
 int minInit3;
-int pesoInit;
 int pos_horas1 = 0;
 int pos_horas2 = 0;
 int pos_horas3 = 0;

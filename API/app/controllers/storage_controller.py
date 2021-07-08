@@ -4,6 +4,7 @@ import services.storage_service as storage_service
 from models.storage import Storage
 from werkzeug.exceptions import HTTPException
 from flask_jwt_extended import jwt_required
+from flask import abort
 import json
 
 bp_storage = Blueprint('storage', 'storage')
@@ -16,10 +17,19 @@ def api_get():
     return jsonify([storage.as_dict() for storage in storage])
 
 @bp_storage.route('/storage', methods=['POST'])
-@jwt_required()
+
 def api_post():
-    storage = storage_service.post(request.json)
-    return jsonify(storage.as_dict())
+    name_product = request.form['name_product']
+    code_product = request.form['code_product']
+    weight = request.form['weight']
+    amount = request.form['amount']
+
+    res = storage_service.post(name_product,code_product,weight,amount)
+    if res == None:
+        return abort(400)
+    else:
+        resp = jsonify(success=True)
+        return resp
 
 @bp_storage.route('/storage/<string:id>', methods=['PUT'])
 @jwt_required()

@@ -16,7 +16,6 @@ extern int horasInit2;
 extern int minInit2;
 extern int horasInit3;
 extern int minInit3;
-extern int pesoInit;
 
 
 int read_LCD_buttons();

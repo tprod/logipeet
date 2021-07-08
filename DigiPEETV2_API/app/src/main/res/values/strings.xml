@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">DigiPEET</string>
+
+    <string name="email">Email:</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="register">Register</string>
+    <string name="choose_your_password">Choose your password</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="welcome">Welcome!</string>
+    <string name="already_have_an_account_login_here">Already have an account? Login here</string>
+    <string name="password">Password:</string>
+    <string name="enter_your_username_email">Enter your username/email</string>
+    <string name="login">login</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="new_around_here">New around here?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="kennel">Kennel</string>
+    <string name="todo">TODO</string>
+    <string name="name_product">Name Product</string>
+    <string name="code_bar">Code Bar:</string>
+    <string name="product">Product:</string>
+    <string name="code">Code:</string>
+    <string name="name">Name:</string>
+    <string name="add_product">Add Product</string>
+    <string name="no_barcode_detected">No Barcode Detected</string>
+    <string name="weight">Weight:</string>
+    <string name="amount">Amount:</string>
+</resources>

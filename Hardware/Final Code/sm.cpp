@@ -1,8 +1,8 @@
 #include "sm.h"
 #include "FuncoesComponentes.h"
 
-float Total_food = 800;     // Quantity of food to dispense (from Rasp pi)
-int maxWater = 800;
+//float pesoInit;     // Quantity of food to dispense (from Rasp pi)
+int maxWater = 200;
 float bowl_weigth;    // Current weigth in the bowl
 float reservoir_weigth; 
 float Final_weigth_reservoir;
@@ -114,12 +114,12 @@ void sm_execute_food(sm_t *psm)  //Desired_weigth deverá ser uma variável glob
         reservoir_weigth = PesoTaca_Reserv();
               //reservoir_weigth = 1240;
               // Calcular quantidade de comida
-         Food2Disp = Total_food - bowl_weigth;
+         Food2Disp = pesoInit - bowl_weigth;
               //Food2Disp = 210;
               //Calculo do peso final do reservatorio
         Final_weigth_reservoir = reservoir_weigth - Food2Disp;
 
-//        if(Total_food == bowl_weigth)
+//        if(pesoInit == bowl_weigth)
 //        {
           
 //        }
