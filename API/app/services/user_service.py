@@ -18,6 +18,14 @@ def get_auth_admin(email,password):
     return auth
 
 
+def sign_up(name,email,password):
+    
+    sign = User(name,email,password)
+    db.session.add(sign)
+    db.session.commit()
+    return sign
+    
+
 def post(body):
 
     user = User(**body)

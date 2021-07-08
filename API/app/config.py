@@ -21,6 +21,7 @@ database_url = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_DATABASE_URI'] = config_obj['SQLALCHEMY_DATABASE_URI'] if database_url is None else database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['JWT_SECRET_KEY'] = "logipeet_seguro"
+app.config['DEBUG'] = True
 
 db = SQLAlchemy(app)
 

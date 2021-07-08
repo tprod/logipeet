@@ -11,10 +11,6 @@ class User(db.Model):
     name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False, unique=True)
     password = db.Column(db.String(128), nullable=False)
-    age = db.Column(db.Integer)
-    gender = db.Column(db.Boolean)
-    address = db.Column(db.String(64)) 
-    phone = db.Column(db.String(9))
     type_user = db.Column(db.Boolean)
     active_user =db.Column(db.Boolean)
     def as_dict(self):
@@ -30,3 +26,10 @@ class User(db.Model):
     def check_password(self, password):
         
         return check_password_hash(self.password, password)
+
+
+    def __init__(self, name, email,password):
+
+            self.name = name
+            self.email = email
+            self.password = password

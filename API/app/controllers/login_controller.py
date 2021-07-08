@@ -8,18 +8,20 @@ from werkzeug.exceptions import HTTPException
 from config import jwt
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import get_jwt_identity
-
+from flask import abort
 
 bp_login = Blueprint('login', 'login')
 
 @bp_login.route('/login', methods=['POST'])
 def api_auth():
-    info_auth = request.get_json() 
-    username = info_auth['email']
-    password = info_auth['password']
+    
+    username = request.form['email']
+    password = request.form['password']
+    
     res = user_service.get_auth(username,password)
     if res == None:
-        return "Wrong username or password"
+        
+        return abort(400)
     else:
         
         acess_token = create_access_token(identity=username, expires_delta=timedelta(seconds=3600))
