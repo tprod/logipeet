@@ -9,7 +9,7 @@
     tools:context=".menu_inicial">
 
     <Button
-        android:id="@+id/insert_product"
+        android:id="@+id/peetmanagment"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:layout_marginTop="164dp"
@@ -32,7 +32,7 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insert_product" />
+        app:layout_constraintTop_toBottomOf="@+id/peetmanagment" />
 
     <Button
         android:id="@+id/Storage"

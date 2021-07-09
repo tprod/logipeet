@@ -40,6 +40,14 @@ public class menu_inicial extends AppCompatActivity {
             }
         });
 
+        Button peetmanagment1 = findViewById(R.id.peetmanagment);
+        peetmanagment1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(menu_inicial.this, peetmanagment.class));
+            }
+        });
+
         Button calendar = findViewById(R.id.schedule);
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override

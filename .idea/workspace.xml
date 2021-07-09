@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6489f7e-4300-4183-97e1-1b79ccdea59e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DigiPEET/app/src/main/java/com/example/digipeet/storage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DigiPEET/app/src/main/res/layout/activity_storage.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DigiPEET/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DigiPEET/app/src/main/AndroidManifest.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a6489f7e-4300-4183-97e1-1b79ccdea59e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
