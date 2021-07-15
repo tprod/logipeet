@@ -7,3 +7,4 @@ SQLAlchemy<1.4
 pyjwt==2.0
 PyYAML
 pyxero
+smbus
